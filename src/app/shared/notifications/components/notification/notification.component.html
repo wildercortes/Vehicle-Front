@@ -1,0 +1,41 @@
+<div *ngIf="notifications.length">
+    <div *ngFor="let notification of notifications; let i = index">
+  
+      <!-- Alert danger -->
+      <div div *ngIf="notification.type && notification.type.getType() == 'alertDanger'" class="alert alert-danger fade show" role="alert">
+        <div class="media d-flex align-items-center">
+          <div class="bg-circle--white bg-circle--md d-flex mr-1">
+            <i-slash class="icon--sm text-danger"></i-slash>
+          </div>
+          <div class="media-body">
+            {{notification.data.text}}
+          </div>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="hide(i)">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Toast success -->
+      <div *ngIf="notification.type && notification.type.getType() == 'toastSuccess'" class="toast toast--success show" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-body">
+          <div class="media d-flex align-items-start">
+            <div class="bg-circle--white bg-circle--md d-flex mr-1">
+              <i-check class="icon--sm text-success"></i-check>
+            </div>
+            <div class="media-body">
+              <h4>¡Bien Hecho!</h4>
+              <p>{{notification.data.text}}</p>
+            </div>
+            <button type="button" class="close" data-dismiss="toast" aria-label="Close" (click)="hide(i)">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+        </div>
+      </div>
+  
+      
+  
+    </div>
+  </div>
+  

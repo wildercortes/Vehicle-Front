@@ -1,0 +1,24 @@
+<div class="container">
+    <mat-card>
+        <mat-card-title>Editar Marca</mat-card-title>
+
+        <form [formGroup]="service.form" autocomplete="off">
+            <mat-form-field class="full-width">
+
+                <input matInput placeholder="descripcion" name="description" formControlName="description">
+
+                <mat-error *ngIf="service.form.controls['description'].errors?.required">El campo descripcion es
+                    requerido.</mat-error>
+                <mat-error *ngIf="service.form.controls['description'].errors?.minlength">El campo descripcion debe
+                    contener almenos 3 letras.</mat-error>
+            </mat-form-field>
+
+            <div class="row-buttons">
+                <span class="spacer"></span>
+                <button type="submit" class="form-btn" mat-raised-button color="primary" [disabled]="service.form.invalid"
+                    (click)="Edit(service.form.value)">Editar</button>
+                <button mat-button mat-dialog-close>Cancel</button>
+            </div>
+        </form>
+    </mat-card>
+</div>
